@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# 仅保留本地，不提交到 Git
+DEPLOY.md

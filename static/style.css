@@ -144,6 +144,26 @@ body {
     font-weight: 600;
 }
 
+.course-intro {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: #f0f7fa;
+    border-radius: 6px;
+    border-left: 4px solid #0a7ea4;
+}
+.course-intro-heading {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+}
+.course-intro-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #444;
+}
+
 .search-wrap {
     position: relative;
 }
@@ -238,6 +258,7 @@ body {
     font-weight: 600;
     color: #555;
     margin-right: 8px;
+    min-width: 7.5em;
 }
 
 .resource-title {

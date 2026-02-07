@@ -20,6 +20,12 @@
                 <a href="{{ url_for('manage_resources', course_id=course.id) }}" class="manage-link">Manage resources</a>
                 <h1>{{ course.code }} – {{ course.name }}</h1>
             </div>
+            {% if course.intro %}
+            <section class="course-intro">
+                <h2 class="course-intro-heading">Course introduction</h2>
+                <p class="course-intro-text">{{ course.intro }}</p>
+            </section>
+            {% endif %}
             <!-- Global search bar: prominent, no scroll needed -->
             <div class="search-wrap">
                 <label for="global-search" class="sr-only">Search resources</label>

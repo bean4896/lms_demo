@@ -21,8 +21,12 @@ def get_resources_for_course(course_id):
 
 
 def normalize(s):
-    """Lowercase and collapse spaces for case-insensitive, flexible matching."""
-    return " ".join(re.split(r"\s+", (s or "").lower().strip()))
+    """Lowercase and collapse spaces for case-insensitive, flexible matching.
+    Insert space between letter and digit so 'week2' matches like 'week 2'."""
+    s = (s or "").lower().strip()
+    s = re.sub(r"([a-zA-Z])(\d)", r"\1 \2", s)
+    s = re.sub(r"(\d)([a-zA-Z])", r"\1 \2", s)
+    return " ".join(re.split(r"\s+", s))
 
 
 def fuzzy_score(query_norm, text_norm):
@@ -44,18 +48,36 @@ def fuzzy_score(query_norm, text_norm):
     return 0.2 * SequenceMatcher(None, query_norm, text_norm).ratio()
 
 
+def _resource_belongs_to_week(r, week_num):
+    """True if resource is for the given week (1-8). Tutorials have a range e.g. 01-02."""
+    w = r.get("week")
+    if r.get("type") == "tutorial":
+        m = re.search(r"Week\s+(\d{1,2})-(\d{1,2})", r.get("title", ""), re.I)
+        if m:
+            a, b = int(m.group(1)), int(m.group(2))
+            return a <= week_num <= b
+    return w == week_num
+
+
 def search_resources(course_id, query, limit=15):
     """
     Fuzzy search over course resources. Returns list of dicts with type, title, week, url/pdf_url.
+    When query is "week N" / "weekN" / "week 0N" (N=1..8), return only resources for that week.
     """
     resources = get_resources_for_course(course_id)
     if not query or not query.strip():
         return []
     q_norm = normalize(query.strip())
+    # "week 2", "week2", "week 02" -> only show week 2 resources
+    week_match = re.match(r"^week\s+(\d{1,2})$", q_norm)
+    if week_match:
+        week_num = int(week_match.group(1))
+        if 1 <= week_num <= 8:
+            filtered = [r for r in resources if _resource_belongs_to_week(r, week_num)]
+            return filtered[:limit]
     scored = []
     for r in resources:
         title = r.get("title", "")
-        # So "week xx video" / "week xx youtube" matches recordings (YouTube links)
         if r.get("type") == "recording":
             title = title + " video recording youtube"
         t_norm = normalize(title)
