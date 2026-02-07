@@ -26,7 +26,7 @@
                 <p class="course-intro-text">{{ course.intro }}</p>
             </section>
             {% endif %}
-            <!-- Global search bar: prominent, no scroll needed -->
+            <!-- Global search bar: most prominent -->
             <div class="search-wrap">
                 <label for="global-search" class="sr-only">Search resources</label>
                 <input type="text"
@@ -50,6 +50,54 @@
                 </div>
             </section>
             <p class="hint" id="hint">Type in the search bar to find resources. Try "lecture 01", "recording", "week 02", or "assignment".</p>
+            {% if course.grading_table %}
+            <section class="course-table-section">
+                <h2 class="course-table-heading">Grading (dummy)</h2>
+                <div class="table-wrap">
+                    <table class="course-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Weight</th>
+                                <th>Notes (e.g. open/closed book, handwrite / ExamSoft)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in course.grading_table %}
+                            <tr>
+                                <td>{{ row.item }}</td>
+                                <td>{{ row.weight }}</td>
+                                <td>{{ row.notes }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            {% endif %}
+            {% if course.timetable_table %}
+            <section class="course-table-section">
+                <h2 class="course-table-heading">Timetable (dummy)</h2>
+                <div class="table-wrap">
+                    <table class="course-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Due / Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in course.timetable_table %}
+                            <tr>
+                                <td>{{ row.item }}</td>
+                                <td>{{ row.due }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            {% endif %}
         </main>
     </div>
     <script>

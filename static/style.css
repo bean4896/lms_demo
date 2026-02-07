@@ -164,6 +164,42 @@ body {
     color: #444;
 }
 
+.course-table-section {
+    margin-bottom: 20px;
+}
+.course-table-heading {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+.course-page .table-wrap {
+    overflow-x: auto;
+    margin-bottom: 0;
+}
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+.course-table th,
+.course-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.course-table th {
+    background: #f0f4f8;
+    font-weight: 600;
+    color: #333;
+}
+.course-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .search-wrap {
     position: relative;
 }

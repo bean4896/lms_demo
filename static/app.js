@@ -17,7 +17,7 @@
     var DEBOUNCE_MS = 200;
     // Dummy PDF used for all Preview/Download buttons (single placeholder file)
     var DUMMY_PDF_URL = window.LMS_DUMMY_PDF_URL || 'https://www.w3.org/WAI/demos/bad/after.pdf';
-    var TYPE_ICONS = { lecture: '\uD83D\uDCDA', tutorial: '\uD83D\uDCCB', assignment: '\uD83D\uDCDD', project: '\uD83D\uDCC1', recording: '\u25B6\uFE0F' };
+    var TYPE_ICONS = { lecture: '\uD83D\uDCDA', tutorial: '\uD83D\uDCCB', assignment: '\uD83D\uDCDD', project: '\uD83D\uDCC1', recording: '\u25B6\uFE0F', grading: '\uD83D\uDCC8', timetable: '\uD83D\uDDD3\uFE0F' };
 
     function renderResource(item) {
         var li = document.createElement('li');
