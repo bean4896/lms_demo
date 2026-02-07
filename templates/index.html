@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS – Course Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="{{ url_for('index') }}" class="nav-brand">LMS Resource Finder</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}" class="nav-link active">Home</a></li>
+        </ul>
+    </nav>
+    <div class="page dashboard">
+        <header class="header">
+            <h1>LMS Resource Finder</h1>
+            <p class="subtitle">Select a course to open its homepage and use the global search.</p>
+        </header>
+        <main class="main">
+            <section class="course-list">
+                <h2>Courses</h2>
+                <ul class="courses">
+                    {% for c in courses %}
+                    <li>
+                        <a href="{{ url_for('course_page', course_id=c.id) }}" class="course-card">
+                            <span class="course-code">{{ c.code }}</span>
+                            <span class="course-name">{{ c.name }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage resources – {{ course.code }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="{{ url_for('index') }}" class="nav-brand">LMS Resource Finder</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('course_page', course_id=course.id) }}" class="nav-link">{{ course.code }}</a></li>
+            <li><a href="{{ url_for('manage_resources', course_id=course.id) }}" class="nav-link active">Manage</a></li>
+        </ul>
+    </nav>
+    <div class="page manage-page">
+        <header class="header">
+            <div class="header-top">
+                <a href="{{ url_for('course_page', course_id=course.id) }}" class="back-link">← Back to course</a>
+            </div>
+            <h1>Manage resources – {{ course.code }} {{ course.name }}</h1>
+            <p class="subtitle">For PDFs: paste a link (URL) to the file. This demo uses links only—no upload to server. For videos: paste YouTube or video URL.</p>
+        </header>
+        <main class="main">
+            <p class="manage-status" id="manage-status"></p>
+            <div class="manage-actions">
+                <button type="button" class="btn-save" id="btn-save">Save changes</button>
+            </div>
+            <div class="table-wrap">
+                <table class="manage-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Link (PDF URL or Video URL)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="manage-tbody"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script>
+        window.LMS_COURSE_ID = "{{ course.id }}";
+        window.LMS_RESOURCES_URL = "{{ url_for('api_get_resources', course_id=course.id) }}";
+        window.LMS_SAVE_URL = "{{ url_for('api_put_resources', course_id=course.id) }}";
+    </script>
+    <script src="{{ url_for('static', filename='manage.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+/* LMS Demo – PC/laptop only, simple and clean */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #222;
+    background: #f5f5f5;
+}
+
+/* ----- Site navigation ----- */
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.nav-brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #222;
+    text-decoration: none;
+}
+.nav-brand:hover {
+    color: #0a7ea4;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+.nav-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.nav-link:hover {
+    color: #0a7ea4;
+}
+.nav-link.active {
+    color: #0a7ea4;
+    font-weight: 600;
+}
+
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+/* ----- Dashboard ----- */
+.dashboard .header {
+    margin-bottom: 32px;
+}
+
+.dashboard .header h1 {
+    margin: 0 0 8px 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin: 0;
+    color: #555;
+}
+
+.course-list h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.courses {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.courses li {
+    margin-bottom: 10px;
+}
+
+.course-card {
+    display: block;
+    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #222;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.course-card:hover {
+    border-color: #0a7ea4;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.course-code {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.course-name {
+    color: #444;
+}
+
+/* ----- Course page & global search ----- */
+.course-page .header {
+    margin-bottom: 24px;
+}
+
+.header-top {
+    margin-bottom: 16px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #0a7ea4;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.course-page .header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.search-wrap {
+    position: relative;
+}
+
+.global-search {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.global-search:focus {
+    border-color: #0a7ea4;
+}
+
+.search-status {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* ----- Results ----- */
+.results-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.results-heading,
+.rec-heading {
+    margin: 0 0 12px 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.rec-heading {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.results-list,
+.recommendations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.results-list li,
+.recommendations-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border-left: 3px solid #0a7ea4;
+}
+
+.recommendations-list li {
+    border-left-color: #6b8e23;
+}
+
+/* Recording / video type */
+.results-list li.recording,
+.recommendations-list li.recording {
+    border-left-color: #9b59b6;
+}
+
+.resource-type {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #555;
+    margin-right: 8px;
+}
+
+.resource-title {
+    font-weight: 500;
+}
+
+.resource-actions {
+    display: inline-flex;
+    gap: 8px;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.btn-pdf {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-preview {
+    background: #e8f4f8;
+    color: #0a7ea4;
+    border: 1px solid #0a7ea4;
+}
+
+.btn-preview:hover {
+    background: #0a7ea4;
+    color: #fff;
+}
+
+.btn-download {
+    background: #eee;
+    color: #444;
+    border: 1px solid #ccc;
+}
+
+.btn-download:hover {
+    background: #ddd;
+    border-color: #999;
+}
+
+.resource-link {
+    color: #0a7ea4;
+    text-decoration: none;
+}
+
+.resource-link:hover {
+    text-decoration: underline;
+}
+
+.hint {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.results-box.hidden,
+.recommendations-box.hidden {
+    display: none;
+}
+
+/* ----- Manage resources (internal) ----- */
+.manage-link {
+    margin-left: 12px;
+    color: #6b8e23;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.manage-link:hover {
+    text-decoration: underline;
+}
+
+.manage-page .header h1 {
+    margin: 8px 0 4px 0;
+}
+.manage-page .subtitle {
+    margin: 0 0 16px 0;
+}
+.manage-status {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+.manage-status.error {
+    color: #c00;
+}
+.manage-actions {
+    margin-bottom: 16px;
+}
+.btn-save {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #0a7ea4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-save:hover {
+    background: #086890;
+}
+.table-wrap {
+    overflow-x: auto;
+}
+.manage-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+.manage-table th,
+.manage-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.manage-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.manage-table .col-type {
+    text-transform: capitalize;
+    width: 100px;
+}
+.input-title,
+.input-link {
+    width: 100%;
+    max-width: 400px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input-link {
+    max-width: 360px;
+}
